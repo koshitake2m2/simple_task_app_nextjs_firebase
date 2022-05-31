@@ -16,7 +16,8 @@ const Home: NextPage = () => {
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
-        <p>{process.env.NEXT_PUBLIC_HELLO}</p>
+        <p>NEXT_PUBLIC_HELLO: {process.env.NEXT_PUBLIC_HELLO}</p>
+        <p>NEXT_PUBLIC_WORLD: {process.env.NEXT_PUBLIC_WORLD}</p>
 
         <p className={styles.description}>
           Get started by editing{" "}

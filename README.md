@@ -1,19 +1,50 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## 作成メモ
+## WIP
+まだ未完成
+
+## 技術
+
+- Next.js
+- Firebase
+  - Authentication
+  - Firestore
+- Vercel
+
+## 作業メモ
 
 ```
 nodenv global 16.14.0
 yarn create next-app --typescript
 yarn add firebase
+yarn add firebase-admin
 yarn add @mui/material @emotion/react @emotion/styled
 yarn add @mui/icons-material
 yarn add @emotion/server
+yarn add -D prettier eslint-config-prettier
+
+npm install -g vercel
 ```
 
-## Getting Started
+### TODO
+- [ ] UIを整える
+- [ ] タスク管理できるようにする
+- [ ] セッション管理
+- [ ] firebase appcheck
 
-First, run the development server:
+
+### firebase
+
+- simple-todo-app-XXX@appspot.gserviceaccount.com	に「サービス アカウント トークン作成」ロールを追加
+
+## 環境変数について
+
+- Project Settings > Environment Variablesにてvercelに環境変数を割り当てられる.
+- .envとvercelで同じ名前の環境変数がある場合, vercelの環境変数の値が採用される.
+- vercelで環境変数を設定した場合, リデプロイする必要がある.
+
+
+## Getting Started
 
 ```bash
 npm run dev
@@ -22,12 +53,6 @@ yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
 ## Learn More
 

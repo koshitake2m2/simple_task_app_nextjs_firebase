@@ -1,3 +1,4 @@
+import { firebase } from "config/firebase";
 import { NewUser, User, UserRepository } from "domain/user";
 import { Firestore } from "firebase/firestore";
 import {
@@ -71,6 +72,13 @@ export class FirestoreUserRepository implements UserRepository {
         console.log(error);
         return undefined;
       });
+  };
+
+  findIdToken = async (): Promise<string | undefined> => {
+    return (
+      firebase.auth.currentUser?.getIdToken(true) ??
+      new Promise(() => undefined)
+    );
   };
 
   create = async (newUser: NewUser): Promise<User> => {

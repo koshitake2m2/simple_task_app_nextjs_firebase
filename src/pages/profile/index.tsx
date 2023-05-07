@@ -1,5 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { Container } from "@mui/system";
+import { dependencies } from "di/dependencies";
 import { NotAuthenticatedUser, UnregisteredUser, User } from "domain/user";
 import type { NextPage } from "next";
 import { useState, useEffect } from "react";
@@ -8,6 +9,7 @@ import { getMaybeCurrentUser } from "usecase/auth";
 
 const Profile: NextPage = () => {
   const [isLoading, setLoading] = useState(false);
+  const [idToken, setIdToken] = useState<string | undefined>(undefined);
   const [maybeUser, setMaybeUser] = useState<
     User | UnregisteredUser | NotAuthenticatedUser | undefined
   >(undefined);
@@ -16,6 +18,8 @@ const Profile: NextPage = () => {
     setLoading(true);
     getMaybeCurrentUser()
       .then((maybeCurrentUser) => setMaybeUser(maybeCurrentUser))
+      .then(() => dependencies.userRepository.findIdToken())
+      .then((t) => setIdToken(t))
       .then(() => setLoading(false));
   }, []);
 
@@ -54,10 +58,12 @@ const Profile: NextPage = () => {
             alignItems: "center",
           }}
         >
-
-          <Typography component="h1" variant="h5">Profile</Typography>
+          <Typography component="h1" variant="h5">
+            Profile
+          </Typography>
           <p>name: {user.name}</p>
           <p>email: {user.email}</p>
+          <p>idToken: {idToken ?? ""}</p>
         </Box>
       </Container>
     </>

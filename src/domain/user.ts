@@ -42,6 +42,7 @@ export interface UserRepository {
   findAll: () => Promise<User[]>;
   findOneById: (id: string) => Promise<User | undefined>;
   findOneByEmail: (email: string) => Promise<User | undefined>;
+  findIdToken: () => Promise<string | undefined>;
   create: (newUser: NewUser) => Promise<User>;
   update: (User: User) => Promise<User>;
   removeBy: (id: string) => Promise<void>;
